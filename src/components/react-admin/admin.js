@@ -8,10 +8,15 @@ import UserIcon from '@mui/icons-material/Group';
 // PHP API CRUD + Migrations:
 import { MigrationList, MigrationEdit, MigrationCreate } from 'components/react-admin/migrations';
 import MigrationIcon from '@mui/icons-material/Storage';
+// Import Custumers Dependencies:
+import jsonapiClient from 'ra-jsonapi-client';
+import { CustomerList, CustomerEdit, CustomerCreate } from 'components/react-admin/customers';
+import CustomerIcon from '@mui/icons-material/SupportAgent';
 
 // API Proveedora:
 //const dataProvider = jsonServerProvider('https://jsonplaceholder.typicode.com');
-const dataProvider = jsonServerProvider('http://proyecto8.test/api/records');
+//const dataProvider = jsonServerProvider('http://proyecto8.test/api/records');
+const dataProvider = jsonapiClient('http://proyecto8.test/api');
 
 // Recursos:
 const RAdmin = () => (
@@ -20,6 +25,7 @@ const RAdmin = () => (
     dataProvider={dataProvider}
     layout={AdminLayout}
   >
+    <Resource name="customers" list={CustomerList} icon={CustomerIcon} edit={CustomerEdit} create={CustomerCreate} />
     <Resource name="migrations" 
       list={MigrationList} icon={MigrationIcon} edit={MigrationEdit} create={MigrationCreate}/>
     <Resource name="posts" list={PostList} edit={PostEdit} create={PostCreate} icon={PostIcon} />
