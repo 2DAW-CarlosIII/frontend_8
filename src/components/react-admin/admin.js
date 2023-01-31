@@ -12,6 +12,9 @@ import MigrationIcon from '@mui/icons-material/Storage';
 import jsonapiClient from 'ra-jsonapi-client';
 import { CustomerList, CustomerEdit, CustomerCreate } from 'components/react-admin/customers';
 import CustomerIcon from '@mui/icons-material/SupportAgent';
+// API Externa:
+import { EcomapsList} from 'components/react-admin/ecomaps';
+import EcomapsIcon from '@mui/icons-material/Palette';
 
 // API Proveedora:
 //const dataProvider = jsonServerProvider('https://jsonplaceholder.typicode.com');
@@ -25,10 +28,11 @@ const RAdmin = () => (
     dataProvider={dataProvider}
     layout={AdminLayout}
   >
+    <Resource name="ecomaps" list={EcomapsList} icon={EcomapsIcon} />
     <Resource name="customers" list={CustomerList} icon={CustomerIcon} edit={CustomerEdit} create={CustomerCreate} />
-    <Resource name="migrations" 
+    {/* <Resource name="migrations" 
       list={MigrationList} icon={MigrationIcon} edit={MigrationEdit} create={MigrationCreate}/>
-    <Resource name="posts" list={PostList} edit={PostEdit} create={PostCreate} icon={PostIcon} />
+    <Resource name="posts" list={PostList} edit={PostEdit} create={PostCreate} icon={PostIcon} /> */}
     <Resource name="users" list={UserList} icon={UserIcon} recordRepresentation="name" />
   </Admin>
 )

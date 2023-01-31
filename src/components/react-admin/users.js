@@ -1,11 +1,16 @@
 // in src/components/react-admin/users.tsx
 import { useMediaQuery } from '@mui/material';
-import { List, SimpleList, Datagrid, TextField, EmailField } from 'react-admin';
+import { List, SimpleList, Datagrid, TextField, EmailField, TextInput } from 'react-admin';
+// Filter Frontend:
+const userFilters = [
+    <TextInput source="q" label="Search" alwaysOn />
+];
 
 export const UserList = () => {
   const isSmall = useMediaQuery((theme) => theme.breakpoints.down('sm'));
+  // JSX:
   return (
-    <List>
+    <List filters={userFilters}>
       {isSmall ? (
         <SimpleList
           primaryText={(record) => record.name}
