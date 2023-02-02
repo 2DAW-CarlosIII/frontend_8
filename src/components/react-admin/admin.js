@@ -31,6 +31,18 @@ const RAdmin = () => {
     setDataProvider(() => dataProvider)
   }
   const myLogin = <Login handleDataProvider={handleDataProvider} />
+  // Avoid Expulsion Url When Forbidden:
+  let token = localStorage.getItem('auth')
+  let settings = null
+  if (token) {
+    token = JSON.parse(localStorage.getItem('auth'))
+      settings = {
+        headers: {
+          Authorization: `${token.token_type} ${token.access_token}`,
+          'X-Requested-With': 'XMLHttpRequest'
+        }
+      }
+  }
   const API_URL = `${process.env.REACT_APP_BACKEND_URL}/api`
   const [dataProvider, setDataProvider] = useState(null)
   if (!dataProvider) handleDataProvider(jsonapiClient(API_URL))
