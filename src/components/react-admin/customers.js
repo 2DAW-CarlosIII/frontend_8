@@ -28,9 +28,11 @@ export const CustomerList = () => {
             <ReferenceField source="user_id" reference="users" />
             <TextField source="first_name" />
             <TextField source="last_name" />
-            <TextField source="job_title" />
             <TextField source="city" />
             <TextField source="country" />
+            <TextField source="telefono" />
+            <TextField source="fecha_nacimiento" />
+            <TextField source="dni" />
             <EditButton />
         </Datagrid>
         )}
@@ -50,9 +52,11 @@ export const CustomerEdit = () => (
         <ReferenceInput source="user_id" reference="users" />
         <TextInput source="first_name" />
         <TextInput source="last_name" />
-        <TextInput source="job_title" />
         <TextInput source="city" />
         <TextInput source="country" />
+        <TextInput source="telefono" />
+        <TextInput source="fecha_nacimiento" />
+        <TextInput source="dni" />
     </SimpleForm>
     </Edit>
 );
@@ -62,9 +66,11 @@ export const CustomerCreate = () => (
             <ReferenceInput source="user_id" reference="users" />
             <TextInput source="first_name" />
             <TextInput source="last_name" />
-            <TextInput source="job_title" />
             <TextInput source="city" />
             <TextInput source="country" />
+            <TextInput source="telefono" />
+            <TextInput source="fecha_nacimiento" />
+            <TextInput source="dni" />
         </SimpleForm>
     </Create>
 );
