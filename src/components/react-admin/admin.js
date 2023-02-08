@@ -12,9 +12,15 @@ import MigrationIcon from '@mui/icons-material/Storage';
 import jsonapiClient from 'ra-jsonapi-client';
 import { CustomerList, CustomerEdit, CustomerCreate } from 'components/react-admin/customers';
 import CustomerIcon from '@mui/icons-material/SupportAgent';
+// Import Vehiculos Dependencies:
+import { VehiculoList, VehiculoEdit, VehiculoCreate } from 'components/react-admin/vehiculos';
+import VehiculoIcon from '@mui/icons-material/CarRentalTwoTone';
+// Import Blablacar Dependencies:
+import { BlacarList, BlacarEdit, BlacarCreate } from 'components/react-admin/blablacars';
+import BlacarIcon from '@mui/icons-material/PostAddTwoTone';
 // API Externa:
 import { EcomapsList} from 'components/react-admin/ecomaps';
-import EcomapsIcon from '@mui/icons-material/Palette';
+import EcomapsIcon from '@mui/icons-material/MapTwoTone';
 // AuthProvider Token:
 import { default as AuthProvider } from 'components/react-admin/authProvider';
 import { default as Login } from 'pages/login'
@@ -56,10 +62,12 @@ const RAdmin = () => {
     >
       <Resource name="ecomaps" list={EcomapsList} icon={EcomapsIcon} />
       <Resource name="customers" list={CustomerList} icon={CustomerIcon} edit={CustomerEdit} create={CustomerCreate} />
+      <Resource name="vehiculos" list={VehiculoList} icon={VehiculoIcon} edit={VehiculoEdit} create={VehiculoCreate} />
+      <Resource name="blablacars" list={BlacarList} icon={BlacarIcon} edit={BlacarEdit} create={BlacarCreate} />
+      <Resource name="users" list={UserList} icon={UserIcon} recordRepresentation="name" />
       {/* <Resource name="migrations" 
         list={MigrationList} icon={MigrationIcon} edit={MigrationEdit} create={MigrationCreate}/>
       <Resource name="posts" list={PostList} edit={PostEdit} create={PostCreate} icon={PostIcon} /> */}
-      <Resource name="users" list={UserList} icon={UserIcon} recordRepresentation="name" />
     </Admin>
   )
 }

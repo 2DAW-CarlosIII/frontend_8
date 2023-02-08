@@ -16,7 +16,7 @@ export const CustomerList = () => {
         {isSmall ? (
         <SimpleList
             primaryText="%{first_name} %{last_name}"
-            secondaryText={(record) => record.job_title}
+            secondaryText={(record) => record.fecha_nacimiento}
             tertiaryText="%{city} - %{country}"
             linkType={(record) => (record.canEdit ? 'edit' : 'show')}
         >
