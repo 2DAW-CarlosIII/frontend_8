@@ -39,7 +39,7 @@ const Register = () => {
         <form onSubmit={submitForm}>
           {/* Name */}
           <div>
-            <Label htmlFor="name">Name</Label>
+            <Label htmlFor="name">Username</Label>
             <Input
               id="name"
               type="text"

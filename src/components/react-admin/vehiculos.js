@@ -1,7 +1,24 @@
-import { List, SimpleList, Datagrid, TextField, ReferenceField, EditButton, Edit, Create, SimpleForm, ReferenceInput, TextInput } from 'react-admin';
+import { 
+    List, 
+    SimpleList, 
+    Datagrid, 
+    TextField, 
+    ReferenceField, 
+    EditButton, 
+    Edit, 
+    Create, 
+    SimpleForm, 
+    ReferenceInput, 
+    TextInput, 
+    SelectInput,
+    NumberInput,
+    required
+} from 'react-admin';
 
 import { useRecordContext} from 'react-admin';
 import { useMediaQuery } from '@mui/material';
+
+import validateVehiculosInput from './validation/validateVehiculosInput';
 
 const vehiculoFilters = [
     <TextInput source="q" label="Search" alwaysOn />,
@@ -46,34 +63,48 @@ const VehiculoTitle = () => {
     // JSX:
     return <span>Vehiculo {record ? `"${record.modelo} ${record.fecha_matriculacion}"` : ''}</span>;
 };
+
 export const VehiculoEdit = () => (
     <Edit title={<VehiculoTitle />}>
-    <SimpleForm>
-        <TextInput source="id" disabled />
-        <ReferenceInput source="customer_id" reference="customers" />
-        <TextInput source="combustible" />
-        <TextInput source="fecha_matriculacion" />
-        <TextInput source="modelo" />
-        <TextInput source="potencia_cv" />
-        <TextInput source="plazas" />
-        <TextInput source="puertas" />
-        <TextInput source="consumo_medio" />
-        <TextInput source="matricula" />
-    </SimpleForm>
+        <SimpleForm validate={validateVehiculosInput}>
+            <TextInput source="id" disabled />
+            <ReferenceInput source="customer_id" reference="customers" validate={required()} />
+            {/* <TextInput source="combustible" /> */}
+            <SelectInput source='combustible' choices={[
+                { id: 'gasolina', name: 'gasolina' },
+                { id: 'diesel', name: 'diesel' },
+                { id: 'hibrido', name: 'hibrido' },
+                { id: 'electrico', name: 'electrico' }
+            ]} validate={required()} />
+            <NumberInput source="fecha_matriculacion" />
+            <TextInput source="modelo" validate={required()}/>
+            <NumberInput source="potencia_cv" />
+            <NumberInput source="plazas" validate={required()} />
+            <NumberInput source="puertas" />
+            <NumberInput source="consumo_medio" validate={required()} />
+            <TextInput source="matricula" validate={required()} />
+        </SimpleForm>
     </Edit>
 );
+
 export const VehiculoCreate = () => (
     <Create>
-        <SimpleForm>
-            <ReferenceInput source="customer_id" reference="customers" />
-            <TextInput source="combustible" />
-            <TextInput source="fecha_matriculacion" />
-            <TextInput source="modelo" />
-            <TextInput source="potencia_cv" />
-            <TextInput source="plazas" />
-            <TextInput source="puertas" />
-            <TextInput source="consumo_medio" />
-            <TextInput source="matricula" />
+        <SimpleForm validate={validateVehiculosInput}>
+            <ReferenceInput source="customer_id" reference="customers" validate={required()} />
+            {/* <TextInput source="combustible" /> */}
+            <SelectInput source='combustible' choices={[
+                { id: 'gasolina', name: 'gasolina' },
+                { id: 'diesel', name: 'diesel' },
+                { id: 'hibrido', name: 'hibrido' },
+                { id: 'electrico', name: 'electrico' }
+            ]} validate={required()} />
+            <NumberInput source="fecha_matriculacion" />
+            <TextInput source="modelo" validate={required()} />
+            <NumberInput source="potencia_cv" />
+            <NumberInput source="plazas" validate={required()} />
+            <NumberInput source="puertas" />
+            <NumberInput source="consumo_medio" validate={required()} />
+            <TextInput source="matricula" validate={required()} />
         </SimpleForm>
     </Create>
 );
