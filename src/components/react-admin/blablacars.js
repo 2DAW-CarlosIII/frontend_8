@@ -1,4 +1,21 @@
-import { List, SimpleList, Datagrid, TextField, ReferenceField, EditButton, Edit, Create, SimpleForm, ReferenceInput, TextInput } from 'react-admin';
+import { 
+    List, 
+    SimpleList, 
+    Datagrid, 
+    TextField, 
+    ReferenceField, 
+    EditButton, 
+    Edit, 
+    Create, 
+    SimpleForm, 
+    ReferenceInput, 
+    TextInput,
+    DateInput,
+    NumberInput,
+    required
+} from 'react-admin';
+
+import validateBlablacarsInput from './validation/validateBlablacarsInput';
 
 import { useRecordContext} from 'react-admin';
 import { useMediaQuery } from '@mui/material';
@@ -26,7 +43,7 @@ export const BlacarList = () => {
         <Datagrid bulkActionButtons={false}>
             <TextField source="id" />
             <ReferenceField source="customer_id" reference="customers" />
-            <ReferenceField source="vehiculo_id" reference="vehiculos" />
+            {/* <ReferenceField source="vehiculo_id" reference="vehiculos" /> */}
             <TextField source="titulo" />
             {/* <TextField source="descripcion" /> */}
             <TextField source="fecha_inicio_viaje" />
@@ -35,9 +52,9 @@ export const BlacarList = () => {
             <TextField source="destino_ruta" />
             <TextField source="distancia" />
             <TextField source="precio" />
-            {/* <TextField source="precio_combustible" />
+            <TextField source="precio_combustible" />
             <TextField source="plazas_disponibles" />
-            <TextField source="estimacion_duracion" /> */}
+            {/* <TextField source="estimacion_duracion" /> */}
             <EditButton />
         </Datagrid>
         )}
@@ -50,41 +67,43 @@ const BlacarTitle = () => {
     // JSX:
     return <span>Blablacar {record ? `"${record.titulo} ${record.fecha_inicio_viaje}"` : ''}</span>;
 };
+
 export const BlacarEdit = () => (
     <Edit title={<BlacarTitle />}>
-    <SimpleForm>
-        <TextInput source="id" disabled />
-        <ReferenceInput source="customer_id" reference="customers" />
-        <ReferenceInput source="vehiculo_id" reference="vehiculos" />
-        <TextInput source="titulo" />
-        <TextInput source="descripcion" />
-        <TextInput source="fecha_inicio_viaje" />
-        <TextInput source="hora_inicio_viaje" />
-        <TextInput source="inicio_ruta" />
-        <TextInput source="destino_ruta" />
-        <TextInput source="distancia" />
-        <TextInput source="precio" />
-        <TextInput source="precio_combustible" />
-        <TextInput source="plazas_disponibles" />
-        <TextInput source="estimacion_duracion" />
-    </SimpleForm>
-    </Edit>
-);
-export const BlacarCreate = () => (
-    <Create>
-        <SimpleForm>
+        <SimpleForm validate={validateBlablacarsInput}>
+            <TextInput source="id" disabled />
             <ReferenceInput source="customer_id" reference="customers" />
             <ReferenceInput source="vehiculo_id" reference="vehiculos" />
-            <TextInput source="titulo" />
+            <TextInput source="titulo" validate={required()} />
             <TextInput source="descripcion" />
-            <TextInput source="fecha_inicio_viaje" />
-            <TextInput source="hora_inicio_viaje" />
-            <TextInput source="inicio_ruta" />
-            <TextInput source="destino_ruta" />
-            <TextInput source="distancia" />
-            <TextInput source="precio" />
-            <TextInput source="precio_combustible" />
-            <TextInput source="plazas_disponibles" />
+            <DateInput source="fecha_inicio_viaje" validate={required()} />
+            <TextInput source="hora_inicio_viaje" validate={required()} />
+            <TextInput source="inicio_ruta" validate={required()} />
+            <TextInput source="destino_ruta" validate={required()} />
+            <NumberInput source="distancia" validate={required()} />
+            <NumberInput source="precio" validate={required()} />
+            <NumberInput source="precio_combustible" validate={required()} />
+            <NumberInput source="plazas_disponibles" validate={required()} />
+            <TextInput source="estimacion_duracion" />
+        </SimpleForm>
+    </Edit>
+);
+
+export const BlacarCreate = () => (
+    <Create>
+        <SimpleForm validate={validateBlablacarsInput}>
+            <ReferenceInput source="customer_id" reference="customers" />
+            <ReferenceInput source="vehiculo_id" reference="vehiculos" />
+            <TextInput source="titulo" validate={required()} />
+            <TextInput source="descripcion" />
+            <DateInput source="fecha_inicio_viaje" validate={required()} />
+            <TextInput source="hora_inicio_viaje" validate={required()} />
+            <TextInput source="inicio_ruta" validate={required()} />
+            <TextInput source="destino_ruta" validate={required()} />
+            <NumberInput source="distancia" validate={required()} />
+            <NumberInput source="precio" validate={required()} />
+            <NumberInput source="precio_combustible" validate={required()} />
+            <NumberInput source="plazas_disponibles" validate={required()} />
             <TextInput source="estimacion_duracion" />
         </SimpleForm>
     </Create>

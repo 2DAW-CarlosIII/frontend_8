@@ -1,4 +1,20 @@
-import { List, SimpleList, Datagrid, TextField, ReferenceField, EditButton, Edit, Create, SimpleForm, ReferenceInput, TextInput } from 'react-admin';
+import { 
+    List, 
+    SimpleList, 
+    Datagrid, 
+    TextField, 
+    ReferenceField, 
+    EditButton, 
+    Edit, 
+    Create, 
+    SimpleForm, 
+    ReferenceInput, 
+    TextInput, 
+    DateInput,
+    required
+} from 'react-admin';
+
+import validateCustomersInput from './validation/validateCustomersInput';
 
 import { useRecordContext} from 'react-admin';
 import { useMediaQuery } from '@mui/material';
@@ -45,32 +61,35 @@ const CustomerTitle = () => {
     // JSX:
     return <span>Customer {record ? `"${record.first_name} ${record.last_name}"` : ''}</span>;
 };
+
 export const CustomerEdit = () => (
     <Edit title={<CustomerTitle />}>
-    <SimpleForm>
-        <TextInput source="id" disabled />
-        <ReferenceInput source="user_id" reference="users" />
-        <TextInput source="first_name" />
-        <TextInput source="last_name" />
-        <TextInput source="city" />
-        <TextInput source="country" />
-        <TextInput source="telefono" />
-        <TextInput source="fecha_nacimiento" />
-        <TextInput source="dni" />
-    </SimpleForm>
+        <SimpleForm validate={validateCustomersInput}>
+            <TextInput source="id" disabled />
+            {/* <ReferenceInput source="user_id" reference="users" value="user_id" disabled /> */}
+            <TextInput source="user_id" disabled/>
+            <TextInput source="first_name" validate={required()} />
+            <TextInput source="last_name" validate={required()} />
+            <TextInput source="city" />
+            <TextInput source="country" validate={required()} />
+            <TextInput source="telefono" validate={required()} />
+            <DateInput source="fecha_nacimiento" />
+            <TextInput source="dni" validate={required()} />
+        </SimpleForm>
     </Edit>
 );
+
 export const CustomerCreate = () => (
     <Create>
-        <SimpleForm>
-            <ReferenceInput source="user_id" reference="users" />
-            <TextInput source="first_name" />
-            <TextInput source="last_name" />
+        <SimpleForm validate={validateCustomersInput}>
+            <ReferenceInput source="user_id" reference="users"/>
+            <TextInput source="first_name" validate={required()} />
+            <TextInput source="last_name" validate={required()} />
             <TextInput source="city" />
-            <TextInput source="country" />
-            <TextInput source="telefono" />
-            <TextInput source="fecha_nacimiento" />
-            <TextInput source="dni" />
+            <TextInput source="country" validate={required()} />
+            <TextInput source="telefono" validate={required()} />
+            <DateInput source="fecha_nacimiento" />
+            <TextInput source="dni" validate={required()} />
         </SimpleForm>
     </Create>
 );
