@@ -8,12 +8,15 @@ import Home from 'pages/home';
 import ForgotPassword from 'pages/forgot-password';
 import PasswordReset from 'pages/password-reset';
 import NotFoundPage from 'pages/404';
+// Landing:
+import HomePage from 'pages/home-page';
 
 function App() {
   return (
     <div className="antialiased">
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<HomePage/>} />
+        <Route path="/React" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
