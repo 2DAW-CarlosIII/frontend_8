@@ -23,16 +23,22 @@
     text-align: center;
 }
 .session-controls {
-    flex-grow: 0.2;
+    flex-grow: 0.1;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-evenly;
     font-family: var(--font_titles);
 }
 .session-controls a {
     transition: all 300ms ease-in-out;
+    font-size: 1.12em;
     filter: opacity(0.48);
     cursor: pointer;
     text-decoration: none;
 }
 .session-controls a:hover { filter: opacity(1); }
+/* ---------------------------------------------------------- @ Media QUerys: */
+/* MD Devices */
+@media (min-width: 676px) {
+    .session-controls { flex-direction: row; }
+}

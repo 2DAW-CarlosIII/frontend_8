@@ -35,6 +35,11 @@ body::-webkit-scrollbar-thumb {
     background-image: linear-gradient(to right, #1d6cff, #050138);
     border-radius: 2px;
 }
+/* Main */
+main { 
+    height: 100vh; 
+    background-color: black;
+}
 /* -------------------------------- TOOLS: */
 .hide_w {
     visibility: hidden;
@@ -44,9 +49,8 @@ body::-webkit-scrollbar-thumb {
     visibility: visible;
     display: block;
 }
-.logo-sizer {
-    width: 56px;
-}
+.logo-sizer { width: 56px; }
+.search-image-sizer { width: 38px; }
 /* ---------------------------------------------------------- @ Media QUerys: */
 /* Small devices ~ SM */
 @media (min-width: 570px) {
