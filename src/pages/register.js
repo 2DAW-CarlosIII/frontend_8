@@ -98,6 +98,7 @@ const Register = () => {
             >
                 Already registered?
             </NavLink>
+            <button className="home-button ml-3" onClick={() => { window.location = '/'; }}>Home</button>
             <Button className="ml-4">Register</Button>
           </div>
         </form>

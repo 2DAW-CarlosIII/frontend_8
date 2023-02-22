@@ -21,7 +21,7 @@ const MainNavbar = function(props) {
         const lis = document.querySelectorAll('#up-menu-lis > li')
         lis.forEach(li => {
             li.addEventListener('click', () => {
-                if(li.innerText.toUpperCase() === 'BLABLACARS') alert('Working on That!');
+                if(li.innerText.toUpperCase() === 'BLABLACARS') window.location = '/payments';
                 else window.open(`https://www.google.es/maps/search/${li.innerText}/@`);
             });
         });

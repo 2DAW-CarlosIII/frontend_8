@@ -38,19 +38,24 @@ body::-webkit-scrollbar-thumb {
 /* Main */
 main { 
     height: 100vh; 
-    background-color: black;
 }
 /* -------------------------------- TOOLS: */
 .hide_w {
     visibility: hidden;
     display: none;
 }
-.show_w {
-    visibility: visible;
-    display: block;
-}
 .logo-sizer { width: 56px; }
 .search-image-sizer { width: 38px; }
+.home-button {
+    background-color: #1F2937;
+    border-radius: 5px;
+    color: aliceblue;
+    padding: 5px 15px;
+    font-weight: bold;
+    font-family: 'Roboto';
+    letter-spacing: 1px;
+}
+.home-button:hover { background-color: #374151; }
 /* ---------------------------------------------------------- @ Media QUerys: */
 /* Small devices ~ SM */
 @media (min-width: 570px) {
@@ -65,7 +70,10 @@ main {
 }
 /* Large devices  ~ LG*/
 @media (min-width: 992px) {
-    
+    .show_lg {
+        visibility: visible;
+        display: block;
+    }
 }
 /* Extra large devices ~ XL*/
 @media (min-width: 1480px) {

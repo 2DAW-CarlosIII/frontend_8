@@ -10,12 +10,14 @@ import PasswordReset from 'pages/password-reset';
 import NotFoundPage from 'pages/404';
 // Landing:
 import HomePage from 'pages/home-page';
+import PaymentPage from 'pages/payments';
 
 function App() {
   return (
     <div className="antialiased">
       <Routes>
         <Route path="/" element={<HomePage/>} />
+        <Route path="/payments" element={<PaymentPage/>} />
         <Route path="/React" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />

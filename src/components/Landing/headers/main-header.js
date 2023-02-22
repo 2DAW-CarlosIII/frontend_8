@@ -9,8 +9,9 @@ const MainHeader = () => (
         </figure>
         <h1>Ecomaps</h1>
         <div className='session-controls'>
-            <a href='/login'>Login</a>
-            <a href='/register'>Register</a>
+            <a href='dashboard/ecomaps'>Dashboard</a>
+            <a href='dashboard/login'>Login</a>
+            <a href='dashboard/register'>Register</a>
         </div>
     </header>
 );

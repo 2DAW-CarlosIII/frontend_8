@@ -58,9 +58,7 @@ const Navigation = ({ user }) => {
                 </button>
               }>
               {/* Authentication */}
-              <DropdownButton onClick={logout}>
-                Logout
-              </DropdownButton>
+              <DropdownButton onClick={logout}>Logout</DropdownButton>
             </Dropdown>
           </div>
           {/* Hamburger */}
