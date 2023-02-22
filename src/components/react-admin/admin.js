@@ -25,6 +25,7 @@ import EcomapsIcon from '@mui/icons-material/MapTwoTone';
 import { default as AuthProvider } from 'components/react-admin/authProvider';
 import { default as Login } from 'pages/login'
 import { useState } from 'react';
+import { Route } from 'react-router-dom';
 // API Proveedora:
 //const dataProvider = jsonServerProvider('https://jsonplaceholder.typicode.com');
 //const dataProvider = jsonServerProvider('http://proyecto8.test/api/records');

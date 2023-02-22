@@ -1,7 +1,7 @@
 .main-footer {
-    background-color: rgb(34, 34, 34);
+    background-color: rgb(7, 7, 7);
     color: aliceblue;
-    height: 72px;
+    height: 8vh;
     display: flex;
     justify-content: center;
     flex-direction: column;
