@@ -83,9 +83,8 @@ const Login = (props) => {
             >
               Forgot your password?
             </NavLink>
-            <Button className="ml-3">
-              Login
-            </Button>
+            <button className="home-button ml-3" onClick={() => { window.location = '/'; }}>Home</button>
+            <Button className="ml-3">Login</Button>
           </div>
         </form>
       </AuthCard>

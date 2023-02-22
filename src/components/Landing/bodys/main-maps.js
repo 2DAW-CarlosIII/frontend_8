@@ -8,11 +8,13 @@ import { useState, useEffect } from 'react';
 // My Components:
 import LocateMeButton from 'components/Landing/items/LocateMeButton';
 import NavigationForm from 'components/Landing/items/NavigationForm';
+import AsideMoreMaps from 'components/Landing/items/aside-more-maps';
 import MainDownNavBar from 'components/Landing/Navs/main-down-navbar';
 // PlaceHolder:
 import L from 'leaflet';
 import placeholdIconRaw from 'images/icons/placeholder.png';
 import chinchetaIconRaw from 'images/icons/chincheta.png';
+
 const placeHoldIcon = L.icon({
     iconUrl: placeholdIconRaw,
     iconSize: [38, 38]
@@ -32,6 +34,27 @@ const mapstype = {
 }
 // Position: (latitud, longitud)
 const position = [37.6019353, -0.9841152]
+// Set My Position:
+function SetMyLocation(props) {
+    // Props Import:
+    const { currentPosition } = props;
+    // Mapa Layer:
+    const mapa = useMap();
+    // Disable Double Click Zoom:
+    mapa.doubleClickZoom.disable();
+    // useEffect Hook:  Se Ejecuta cuando se Renderiza cambiando el valor de selectedPosition.
+    useEffect(() => {
+        if(currentPosition) {
+            mapa.setView(
+                L.latLng(currentPosition[0], currentPosition[1]),
+                mapa.getZoom(),
+                { animate: true }
+            );
+        }
+    }, [currentPosition]);
+    // JSX: 
+    return null;
+}
 // Reset Center view Little Component:
 function ResetCenterView(props) {
     // Props Import:
@@ -74,6 +97,7 @@ const MainMaps = (props) => {
     const location_selection_position = [selectedPosition?.lat, selectedPosition?.lon];
     // useState Hook: Render When Value Change and Conserv the value.
     const [currentMapType, setCurrentMapType] = useState(mapstype.basic);
+    const [currentPosition, setCurrentPosition] = useState(position);
     // Funcionalidad Change Map Type:
     function removeActiveLis(lis, li) {
         lis.forEach(li => { li.setAttribute('class', ''); });
@@ -110,10 +134,12 @@ const MainMaps = (props) => {
                     </Marker>
                 )}
                 <ResetCenterView selectedPosition={selectedPosition}/>
-                <LocateMeButton />
+                <SetMyLocation currentPosition={currentPosition}/>
             </MapContainer>
+            <LocateMeButton  setCurrentPosition={setCurrentPosition}/>
             <NavigationForm/>
             <MainDownNavBar/>
+            <AsideMoreMaps/>
         </section>
     );
 };

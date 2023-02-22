@@ -28,7 +28,8 @@
 }
 .main-navbar > ul:first-of-type {
     background-color: rgb(64, 112, 243);
-    flex-grow: 0.6;
+    flex-grow: 0.5;
+    font-family: var(--font_footer);
 }
 .main-navbar > ul:nth-child(2) {
     background-color: rgb(175, 56, 56);
