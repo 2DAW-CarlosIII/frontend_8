@@ -26,11 +26,14 @@ const MainNavbar = function(props) {
             });
         });
     });
+    function goHome() {
+        window.location = '/';
+    }
     // JSX:
     return (
         <nav className='main-navbar'>
             <ul>
-                <li>Who We Are</li>
+                <li onClick={goHome}>Maps</li>
             </ul>
             <ul id='up-menu-lis'>
                 <li>Trenes</li>
