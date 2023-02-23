@@ -28,19 +28,19 @@
 }
 .main-navbar > ul:first-of-type {
     background-color: rgb(64, 112, 243);
-    flex-grow: 0.8;
+    flex-grow: 0.7;
     font-family: var(--font_footer);
 }
 .main-navbar > ul:nth-child(2) {
     background-color: rgb(175, 56, 56);
-    flex-grow: 0.4;
+    flex-grow: 0.7;
 }
 .main-navbar > ul:last-of-type {
     background-color: rgb(27, 27, 27);
-    flex-grow: 0.6;
+    flex-grow: 0.8;
 }
 .search-nav {
-    flex-grow: 0.9;
+    flex-grow: 1;
     display: flex;
 }
 #search-bar-nav {

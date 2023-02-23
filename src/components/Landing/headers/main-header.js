@@ -11,7 +11,7 @@ const MainHeader = () => (
         <div className='session-controls'>
             <a href='dashboard/ecomaps'>Dashboard</a>
             <a href='dashboard/login'>Login</a>
-            <a href='dashboard/register'>Register</a>
+            <a href='/register'>Register</a>
         </div>
     </header>
 );

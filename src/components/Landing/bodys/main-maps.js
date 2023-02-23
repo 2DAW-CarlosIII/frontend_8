@@ -50,6 +50,10 @@ function SetMyLocation(props) {
                 mapa.getZoom(),
                 { animate: true }
             );
+            // Add Marker:
+            // const marker = L.marker([currentPosition[0], currentPosition[1]], {icon: placeHoldIcon})
+            // mapa.removeLayer(marker);
+            // marker.addTo(mapa);
         }
     }, [currentPosition]);
     // JSX: 
@@ -65,12 +69,13 @@ function ResetCenterView(props) {
     mapa.doubleClickZoom.disable();
     // Add Markers When Double Click:
     const markers = [];
+    // Add Markers:
     mapa.on('dblclick', evento => {
         let latlng = mapa.mouseEventToLatLng(evento.originalEvent);
         markers.push(L.marker([latlng.lat, latlng.lng], {icon: chinchetaIcon}));
-        // Clean Marker When Click:
         markers.forEach(marker => {
             marker.addTo(mapa);
+            // Clean Marker When Click:
             marker.addEventListener('click', () => {
                 mapa.removeLayer(marker);
                 markers.splice(markers.indexOf(marker), 1);
